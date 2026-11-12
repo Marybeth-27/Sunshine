@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>EcoLife – Save Nature, Save Life</title>
+<style>
+:root{--forest:#1f5130;--leaf:#a8d5a2;--mint:#eef7ec;--brown:#7a5230;--bg:#fff;--text:#22301f;--card:#fff;--muted:#5b6b57;--line:#dbe8d7;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--forest:#6fbf7f;--leaf:#2f5a3a;--mint:#16221a;--brown:#c49a6c;--bg:#0f1812;--text:#e6efe3;--card:#1a2a1f;--muted:#9fb39b;--line:#2a3d2f}}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:60}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;line-height:1.2}
+a{color:inherit}
+.wrap{max-width:1100px;margin:auto;padding:0 20px}
+section{padding:80px 0}
+.alt{background:var(--mint)}
+.title{text-align:center;margin-bottom:44px}
+.title h2{font-size:2.1rem;color:var(--forest)}
+.title p{color:var(--muted);max-width:620px;margin:10px auto 0}
+.title:after{content:"";display:block;width:60px;height:4px;border-radius:2px;background:var(--brown);margin:16px auto 0}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--forest);color:#fff}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) nav{background:#173d25}}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:Georgia,serif;font-weight:700;font-size:1.35rem;text-decoration:none}
+.menu{display:flex;gap:6px;list-style:none;padding:0}
+.menu a{display:block;padding:8px 14px;border-radius:20px;text-decoration:none;font-size:.95rem;transition:.2s}
+.menu a:hover,.menu a.active{background:rgba(255,255,255,.18)}
+.burger{display:none;background:none;border:0;color:#fff;font-size:1.7rem;cursor:pointer}
+.hero{position:relative;min-height:calc(100vh - 64px);display:flex;align-items:center;color:#fff;overflow:hidden;background:linear-gradient(180deg,#0e3b24 0%,#2a7a45 55%,#8fcf8b 100%);padding:60px 0}
+.hero svg{position:absolute;bottom:0;left:0;width:100%;height:60%}
+.hero .wrap{position:relative;z-index:2}
+.hero h1{font-size:clamp(2.4rem,7vw,4.6rem);text-shadow:0 2px 12px rgba(0,0,0,.35)}
+.hero p{font-size:1.2rem;max-width:560px;margin:18px 0 30px;text-shadow:0 1px 6px rgba(0,0,0,.4)}
+.btn{display:inline-block;background:var(--brown);color:#fff;border:0;padding:14px 32px;border-radius:30px;font-size:1rem;font-weight:600;text-decoration:none;cursor:pointer;transition:.25s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.25);filter:brightness(1.1)}
+.grid{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px;transition:.3s;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.card:hover{transform:translateY(-8px);box-shadow:0 14px 30px rgba(31,81,48,.18);border-color:var(--forest)}
+.card .ic{font-size:2.6rem;margin-bottom:10px}
+.card h3{color:var(--forest);margin-bottom:8px}
+.card p{color:var(--muted);font-size:.95rem}
+.about{display:grid;gap:40px;grid-template-columns:1fr 1fr;align-items:center}
+.about .art{border-radius:20px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.15)}
+.about .art svg{display:block;width:100%;height:auto}
+.about h3{color:var(--forest);margin:18px 0 4px;font-size:1.3rem}
+.about p{color:var(--muted)}
+.stats{display:flex;gap:30px;margin-top:24px;flex-wrap:wrap}
+.stats b{display:block;font-size:1.8rem;color:var(--brown);font-family:Georgia,serif}
+.stats span{font-size:.85rem;color:var(--muted)}
+.bin{border-top:8px solid var(--c);cursor:pointer;text-align:center}
+.bin .ic{font-size:3.2rem}
+.bin ul{list-style:none;padding:0;margin-top:12px;font-size:.9rem;text-align:left;max-height:0;overflow:hidden;opacity:0;transition:.4s;color:var(--text)}
+.bin.open ul{max-height:220px;opacity:1}
+.bin small{display:block;margin-top:10px;color:var(--forest);font-weight:600;font-size:.8rem}
+.act{padding:0;overflow:hidden}
+.act .pic{height:150px;display:flex;align-items:center;justify-content:center;font-size:4.5rem;background:linear-gradient(135deg,var(--a),var(--b));transition:.4s}
+.act:hover .pic{font-size:5.4rem}
+.act .body{padding:22px}
+.contact{display:grid;gap:40px;grid-template-columns:1fr 1fr}
+form{display:grid;gap:16px}
+label{font-weight:600;font-size:.9rem}
+select{width:100%;padding:13px 15px;border:1px solid var(--line);border-radius:12px;font:inherit;background:var(--card);color:var(--text);margin-top:5px}
+.inbox{background:var(--mint);border-top:4px solid var(--brown)}
+.inbox .item{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:12px}
+.inbox .item small{color:var(--muted)}
+.inbox .item button{float:right;background:none;border:1px solid var(--line);border-radius:8px;color:var(--text);cursor:pointer;padding:4px 10px}
+input,textarea{width:100%;padding:13px 15px;border:1px solid var(--line);border-radius:12px;font:inherit;background:var(--card);color:var(--text);margin-top:5px}
+input:focus,textarea:focus{outline:2px solid var(--forest);border-color:transparent}
+textarea{min-height:140px;resize:vertical}
+.ok{display:none;background:var(--leaf);color:#12361f;padding:18px;border-radius:14px;font-weight:600}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .ok{color:#e6efe3}}
+.ok.show{display:block;animation:pop .5s}
+.social{display:flex;gap:12px;margin-top:20px;flex-wrap:wrap}
+.social a{padding:10px 18px;border-radius:24px;background:var(--forest);color:#fff;text-decoration:none;font-size:.9rem;transition:.2s}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .social a{color:#0f1812}}
+.social a:hover{background:var(--brown);transform:translateY(-3px)}
+footer{background:var(--forest);color:#fff;text-align:center;padding:36px 20px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) footer{background:#173d25}}
+footer a{margin:0 10px;opacity:.85}
+.fade{opacity:0;transform:translateY(30px);transition:opacity .7s,transform .7s}
+.fade.in{opacity:1;transform:none}
+@keyframes pop{from{transform:scale(.9);opacity:0}to{transform:none;opacity:1}}
+@keyframes sway{50%{transform:translateX(8px)}}
+.hero .leaf{position:absolute;font-size:2rem;animation:sway 5s ease-in-out infinite;opacity:.5}
+@media (max-width:820px){
+ .burger{display:block}
+ .menu{position:absolute;top:64px;left:0;right:0;background:var(--forest);flex-direction:column;padding:10px 20px 18px;display:none}
+ .menu.open{display:flex}
+ .about,.contact{grid-template-columns:1fr}
+ section{padding:56px 0}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+ <a class="logo" href="#home">🌿 EcoLife</a>
+ <button class="burger" id="burger" aria-label="Toggle menu">☰</button>
+ <ul class="menu" id="menu">
+  <li><a href="#home">Home</a></li><li><a href="#about">About Us</a></li><li><a href="#tips">Eco Tips</a></li>
+  <li><a href="#recycling">Recycling Guide</a></li><li><a href="#activities">Activities</a></li><li><a href="#contact">Contact Us</a></li><li id="inboxNav" hidden><a href="#inbox">📥 Inbox <span id="cnt"></span></a></li>
+ </ul>
+</div></nav>
+
+<header class="hero" id="home">
+ <span class="leaf" style="left:12%;top:20%">🍃</span><span class="leaf" style="left:70%;top:14%;animation-delay:1s">🍃</span><span class="leaf" style="left:85%;top:45%;animation-delay:2s">🍂</span>
+ <svg viewBox="0 0 1200 400" preserveAspectRatio="none" aria-hidden="true">
+  <g fill="#1d6b3a" opacity=".55"><path d="M0 400V220l40-90 40 90 30-60 40 100 50-120 50 130 45-80 45 90 50-110 50 120 40-70 50 100 50-130 50 120 45-90 45 100 50-120 50 130 45-80 45 90 50-110 50 120 40-70 50 100 50-130 40 90V400z"/></g>
+  <g fill="#14502b" opacity=".8"><path d="M0 400V290l50-120 50 120 40-70 50 110 50-150 50 150 40-90 50 110 50-130 50 140 40-80 50 100 50-150 50 150 40-90 50 110 50-130 50 140 40-80 50 100 50-120 40 90V400z"/></g>
+  <g fill="#0b3a1f"><path d="M0 400V340l45-90 45 90 40-60 45 80 50-110 50 110 40-70 45 80 50-100 50 110 40-70 50 90 50-110 50 110 40-70 45 80 50-100 50 110 40-70 50 90 50-100 45 100V400z"/></g>
+  <g fill="#6b4524"><rect x="170" y="330" width="14" height="70"/><rect x="520" y="335" width="14" height="65"/><rect x="900" y="330" width="14" height="70"/></g>
+ </svg>
+ <div class="wrap">
+  <h1>Save Nature,<br>Save Life</h1>
+  <p>Every tree planted, every drop saved and every item recycled brings us closer to a greener, healthier planet. Start your journey with EcoLife today.</p>
+  <a class="btn" href="#about">Explore More ↓</a>
+ </div>
+</header>
+
+<section id="about"><div class="wrap">
+ <div class="title fade"><h2>About EcoLife</h2><p>A community-driven project that inspires people to protect the environment through small, daily actions.</p></div>
+ <div class="about">
+  <div class="art fade">
+   <svg viewBox="0 0 500 360" role="img" aria-label="Illustration of a green hill with trees, sun and a recycling symbol">
+    <rect width="500" height="360" fill="#bfe6f5"/><circle cx="410" cy="70" r="38" fill="#ffd966"/>
+    <path d="M0 360V230q120-90 250-20t250-30v180z" fill="#6fbf6f"/><path d="M0 360V280q150-70 280-10t220-20v110z" fill="#3c9a50"/>
+    <g><rect x="90" y="190" width="12" height="60" fill="#7a5230"/><circle cx="96" cy="170" r="42" fill="#1f5130"/></g>
+    <g><rect x="200" y="215" width="10" height="50" fill="#7a5230"/><circle cx="205" cy="198" r="32" fill="#2e7d46"/></g>
+    <g><rect x="340" y="200" width="12" height="60" fill="#7a5230"/><circle cx="346" cy="178" r="40" fill="#1f5130"/></g>
+    <text x="250" y="330" font-size="56" text-anchor="middle">♻️</text>
+   </svg>
+  </div>
+  <div class="fade">
+   <h3 style="margin-top:0">Our Purpose</h3><p>EcoLife exists to raise awareness about environmental problems and to give everyone practical, easy ways to help solve them.</p>
+   <h3>Our Mission</h3><p>To educate and empower communities to reduce waste, conserve resources and restore nature through action and education.</p>
+   <h3>Our Vision</h3><p>A world where people live in harmony with nature, and clean air, water and green spaces are available to every generation.</p>
+   <div class="stats"><div><b id="c1" data-n="5000">0</b><span>Trees planted</span></div><div><b id="c2" data-n="120">0</b><span>Clean-up drives</span></div><div><b id="c3" data-n="3500">0</b><span>Volunteers</span></div></div>
+  </div>
+ </div>
+</div></section>
+
+<section id="tips" class="alt"><div class="wrap">
+ <div class="title fade"><h2>Eco Tips</h2><p>Simple habits that make a big difference.</p></div>
+ <div class="grid">
+  <div class="card fade"><div class="ic">💧</div><h3>Save Water</h3><p>Turn off the tap while brushing, fix leaks quickly, take shorter showers and collect rainwater for plants.</p></div>
+  <div class="card fade"><div class="ic">💡</div><h3>Save Electricity</h3><p>Switch to LED bulbs, unplug unused devices, use natural light and set air conditioning a little higher.</p></div>
+  <div class="card fade"><div class="ic">🌳</div><h3>Plant Trees</h3><p>Trees clean the air, cool our cities and shelter wildlife. Plant native species and care for them as they grow.</p></div>
+  <div class="card fade"><div class="ic">🛍️</div><h3>Reduce Plastic</h3><p>Bring reusable bags, bottles and containers. Say no to single-use straws, cutlery and packaging.</p></div>
+  <div class="card fade"><div class="ic">🧹</div><h3>Keep Surroundings Clean</h3><p>Dispose of litter properly, join clean-ups and help keep streets, rivers and beaches beautiful.</p></div>
+ </div>
+</div></section>
+
+<section id="recycling"><div class="wrap">
+ <div class="title fade"><h2>Recycling Guide</h2><p>Tap a bin to see what belongs inside.</p></div>
+ <div class="grid">
+  <div class="card bin fade" style="--c:#43a047" tabindex="0" role="button" aria-expanded="false"><div class="ic">🍃</div><h3>Biodegradable</h3><p>Waste that decomposes naturally and can become compost.</p>
+   <ul><li>🍌 Fruit and vegetable peels</li><li>🍂 Leaves and garden waste</li><li>🥚 Eggshells, coffee grounds</li><li>🍚 Leftover food</li></ul><small>Tap to view ▾</small></div>
+  <div class="card bin fade" style="--c:#1e88e5" tabindex="0" role="button" aria-expanded="false"><div class="ic">♻️</div><h3>Recyclable</h3><p>Clean materials that can be processed into new products.</p>
+   <ul><li>🍾 Glass bottles and jars</li><li>🥫 Metal cans</li><li>📰 Paper and cardboard</li><li>🧴 Clean plastic bottles</li></ul><small>Tap to view ▾</small></div>
+  <div class="card bin fade" style="--c:#757575" tabindex="0" role="button" aria-expanded="false"><div class="ic">🗑️</div><h3>Residual</h3><p>Waste that cannot be composted or recycled.</p>
+   <ul><li>🧻 Used tissues and diapers</li><li>🍬 Candy wrappers</li><li>🧽 Dirty sponges</li><li>🚬 Cigarette butts</li></ul><small>Tap to view ▾</small></div>
+  <div class="card bin fade" style="--c:#e53935" tabindex="0" role="button" aria-expanded="false"><div class="ic">⚠️</div><h3>Special Waste</h3><p>Hazardous items that need careful handling and drop-off points.</p>
+   <ul><li>🔋 Batteries</li><li>💻 Electronics (e-waste)</li><li>💊 Expired medicines</li><li>🧪 Paint and chemicals</li></ul><small>Tap to view ▾</small></div>
+ </div>
+</div></section>
+
+<section id="activities" class="alt"><div class="wrap">
+ <div class="title fade"><h2>Environmental Activities</h2><p>Join our programs and be part of the change.</p></div>
+ <div class="grid">
+  <div class="card act fade" style="--a:#2e7d32;--b:#a8d5a2"><div class="pic">🌱</div><div class="body"><h3>Tree Planting</h3><p>Volunteers plant native seedlings in forests, schools and riverbanks to restore green cover.</p></div></div>
+  <div class="card act fade" style="--a:#1e88e5;--b:#b3e5fc"><div class="pic">🧤</div><div class="body"><h3>Community Clean-Up</h3><p>Neighbors gather to collect litter from beaches, parks and streets, leaving them cleaner for all.</p></div></div>
+  <div class="card act fade" style="--a:#8d6e63;--b:#d7ccc8"><div class="pic">♻️</div><div class="body"><h3>Recycling Campaigns</h3><p>Collection drives and workshops teach families how to sort waste and turn trash into treasure.</p></div></div>
+  <div class="card act fade" style="--a:#f9a825;--b:#fff59d"><div class="pic">📢</div><div class="body"><h3>Awareness Programs</h3><p>Talks, school visits and art contests that spread knowledge about climate and conservation.</p></div></div>
+ </div>
+</div></section>
+
+<section id="contact"><div class="wrap">
+ <div class="title fade"><h2>Contact Us</h2><p>Have a question or want to volunteer? We’d love to hear from you.</p></div>
+ <div class="contact">
+  <form id="form" class="fade" novalidate>
+   <div><label for="n">Name</label><input id="n" required autocomplete="name"></div>
+   <div><label for="e">Email</label><input id="e" type="email" required autocomplete="email"></div>
+   <div><label for="t">I’d like to</label><select id="t"><option>Volunteer with EcoLife</option><option>Ask a question</option><option>Suggest an idea</option></select></div>
+   <div><label for="m">Message</label><textarea id="m" required></textarea></div>
+   <button class="btn" type="submit">Send Message</button>
+   <div class="ok" id="ok" role="status"></div>
+  </form>
+  <div class="fade">
+   <h3 style="color:var(--forest);font-size:1.4rem">Let’s grow together 🌍</h3>
+   <p style="color:var(--muted);margin-top:10px">Share your ideas, invite us to your school or community, or join our next tree planting day. Follow us for daily eco tips and event updates.</p>
+   <p style="margin-top:14px">📧 <a href="mailto:marybethsocorrom@gmail.com?subject=EcoLife%20message">marybethsocorrom@gmail.com</a></p>
+   <div class="social">
+    <a href="https://www.facebook.com" target="_blank" rel="noopener">Facebook</a><a href="https://www.instagram.com" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://x.com" target="_blank" rel="noopener">X</a><a href="https://www.youtube.com" target="_blank" rel="noopener">YouTube</a>
+   </div>
+  </div>
+ </div>
+</div></section>
+
+<section id="inbox" class="inbox" hidden><div class="wrap">
+ <div class="title"><h2>Volunteer Inbox</h2><p>Only you (the owner) can see this. New messages and volunteer sign-ups appear here.</p></div>
+ <div id="inboxList"></div>
+</div></section>
+
+<footer>
+ <p><b>🌿 EcoLife</b> – Save Nature, Save Life</p>
+ <p style="margin:10px 0"><a href="#home">Home</a><a href="#about">About</a><a href="#tips">Tips</a><a href="#recycling">Recycling</a><a href="#activities">Activities</a><a href="#contact">Contact</a></p>
+ <p style="font-size:.85rem;opacity:.8">© <span id="yr">2026</span> EcoLife. All rights reserved.</p>
+</footer>
+
+<script>
+const menu=document.getElementById('menu');
+document.getElementById('burger').onclick=()=>menu.classList.toggle('open');
+menu.querySelectorAll('a').forEach(a=>a.onclick=()=>menu.classList.remove('open'));
+document.getElementById('yr').textContent=new Date().getFullYear();
+// fade-in + counters
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+const co=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;co.unobserve(e.target);
+ const t=+e.target.dataset.n;let v=0;const s=Math.max(1,Math.ceil(t/60));
+ const i=setInterval(()=>{v=Math.min(t,v+s);e.target.textContent=v.toLocaleString()+'+';if(v>=t)clearInterval(i)},25)}));
+document.querySelectorAll('[data-n]').forEach(el=>co.observe(el));
+// active nav link
+const links=[...menu.querySelectorAll('a')];
+const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+e.target.id))}),{rootMargin:'-45% 0px -50% 0px'});
+document.querySelectorAll('header[id],section[id]').forEach(s=>so.observe(s));
+// recycling cards
+document.querySelectorAll('.bin').forEach(b=>{
+ const t=()=>{const o=b.classList.toggle('open');b.setAttribute('aria-expanded',o)};
+ b.onclick=t;b.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();t()}};
+});
+// contact form
+const dbP=(window.claude?window.claude.use('db'):Promise.resolve(null)).catch(()=>null);
+(async()=>{
+ const u=window.claude?await window.claude.use('user').catch(()=>null):null;
+ if(!u||!(await u.isOwner()))return;
+ const db=await dbP;if(!db)return;
+ const box=document.getElementById('inbox'),list=document.getElementById('inboxList');box.hidden=false;document.getElementById('inboxNav').hidden=false;
+ db.collection('volunteers').orderBy('sent','desc').onSnapshot(s=>{
+  list.textContent='';
+  const unread=s.docs.filter(x=>!(x.data()||{}).read).length;document.getElementById('cnt').textContent=unread?'('+unread+')':'';
+  if(s.empty){list.textContent='No messages yet.';return}
+  s.docs.forEach(d=>{const v=d.data()||{};const it=document.createElement('div');it.className='item';
+   const h=document.createElement('b');h.textContent=(v.name||'')+' – '+(v.type||'');
+   const a=document.createElement('a');a.href='mailto:'+encodeURIComponent(v.email||'');a.textContent=' '+(v.email||'');
+   const sm=document.createElement('small');sm.textContent=' · '+new Date(v.sent||0).toLocaleString();
+   const p=document.createElement('p');p.textContent=v.message||'';
+   const bd=document.createElement('button');bd.textContent='Delete';bd.onclick=()=>db.doc('volunteers/'+d.id).delete().catch(()=>{bd.textContent='Could not delete'});
+   const br=document.createElement('button');br.textContent=v.read?'Mark unread':'Mark read';br.style.marginRight='8px';br.onclick=()=>db.doc('volunteers/'+d.id).update({read:!v.read}).catch(()=>{br.textContent='Could not update'});
+   if(v.read)it.style.opacity='.6';
+   it.append(bd,br,h,a,sm,p);list.append(it)});
+ },()=>{list.textContent='Could not load messages.'});
+})();
+document.getElementById('form').onsubmit=async e=>{
+ e.preventDefault();
+ const n=document.getElementById('n'),em=document.getElementById('e'),m=document.getElementById('m'),ok=document.getElementById('ok');
+ if(!n.value.trim()||!/^\S+@\S+\.\S+$/.test(em.value)||!m.value.trim()){
+  ok.className='ok show';ok.style.background='#f8d7c4';ok.style.color='#5a2a10';
+  ok.textContent='Please fill in your name, a valid email and a message.';return}
+ const form=e.target,data={name:n.value.trim(),email:em.value.trim(),message:m.value.trim(),type:document.getElementById('t').value,sent:Date.now()};
+ ok.style.background='';ok.style.color='';ok.className='ok show';ok.textContent='Sending…';
+ try{
+  const db=await dbP;if(!db)throw 0;
+  const us=await window.claude.use('user');const me=us&&await us.me();if(!me||!me.id)throw 0;
+  await db.doc('volunteers/'+me.id).set(data);
+  ok.textContent='✅ Thank you, '+data.name+'! Your message has been sent. We’ll reply to '+data.email+' soon.';
+  form.reset();
+ }catch(err){
+  ok.style.background='#f8d7c4';ok.style.color='#5a2a10';
+  ok.textContent='Sorry, your message could not be saved here. ';
+  const ml=document.createElement('a');ml.textContent='Click to email us directly instead.';
+  ml.href='mailto:marybethsocorrom@gmail.com?subject='+encodeURIComponent('EcoLife: '+data.type)+'&body='+encodeURIComponent(data.message+'\n\n'+data.name+' ('+data.email+')');
+  ok.append(ml);
+ }
+};
+</script>
+</body>
+</html>
